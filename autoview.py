@@ -1,9 +1,8 @@
-from fp.fp import FreeProxy
 from time import sleep
 
 import requests
 
-def hehe():
+def hehe(proxy):
     pap = {
         "accept": "application/json",
         "accept-language": "en-US,en;q=0.9",
@@ -17,7 +16,6 @@ def hehe():
         "referrerPolicy": "strict-origin-when-cross-origin"
     }
     
-    proxy = FreeProxy(timeout=5, rand=True, https=True).get()
     proxie = {'https': proxy}
     print(proxie)
     hehe = {"exhibition":"63ee43d8004f09ca3666ff17"}
@@ -26,7 +24,15 @@ def hehe():
         print(haha.json())
     except:
         print('dead proxy')
+ 
+
+
+def getallproxy():
+    proxhttps = requests.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/json/proxies.json')
+    return proxhttps.json()['https']
 
 while (True):
-    hehe()
-    print('sleep 30s')
+    for allprox in getallproxy():
+      sleep(5)
+      print('sleep 5s')
+      hehe(allprox)

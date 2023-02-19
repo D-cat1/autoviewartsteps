@@ -20,7 +20,7 @@ def hehe(proxy):
     print(proxie)
     hehe = {"exhibition":"63ee43d8004f09ca3666ff17"}
     try:
-        haha = requests.post('https://www.artsteps.com/api/views', proxies=proxie, headers=pap, json=hehe, timeout=60)
+        haha = requests.post('https://www.artsteps.com/api/views', proxies=proxie, headers=pap, json=hehe, timeout=30)
         print(haha.json())
     except:
         print('dead proxy')
